@@ -1,7 +1,30 @@
+//attributes
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 var gameStarted = false;
+//key mapping
+var keys = [];
+//speed down -- higher means more slippery
+var friction = 0.84;
+var player = 
+{
+	x:5,
+	y:canvas.height - 20,
+	width:20,
+	height:20,
+	speed:5,
+	velX:0,
+	velY:0,
+	color: "#ff0000",
+	draw: function()
+	{
+		context.fillStyle = this.color;
+		context.fillRect(this.x, this.y, this.width, this.height);
+	}
+}
 
+
+//logic
 intro_screen();
 
 document.body.addEventListener("keydown", function(event)
@@ -11,10 +34,13 @@ document.body.addEventListener("keydown", function(event)
 		startGame();
 		//alert('fuck off');
 	}
-	
+	keys[event.keyCode] = true;
 });
 
-
+document.body.addEventListener("keyup", function(event)
+{
+	keys[event.keyCode] = false;
+});
 
 
 function intro_screen()
@@ -31,13 +57,13 @@ function intro_screen()
 
 	//second draw -- click text
 	context.font = '20px Courier Bold';
-	context.fillText('Press enter to start', canvas.width/2, canvas.height/1.5);
+	context.fillText('Press ENTER to start', canvas.width/2, canvas.height/1.5);
 }
 
 function startGame()
 {
 	gameStarted = true;
-	console.log("started");
+	//console.log("Game started");
 	setInterval(function()
 	{
 		clearMap();
@@ -48,10 +74,29 @@ function startGame()
 
 function loop()
 {
-	console.log("Game running");
+	//console.log("Game running");
+	//clearMap();
+	player.draw();
+	if(keys[39])
+	{
+		if(player.velX < player.speed)
+		{
+			player.velX++;
+		}
+	}
+	if(keys[37])
+	{
+		if(player.velX > -player.speed)
+		{
+			player.velX--;
+		}
+	}
+
+	player.x += player.velX;
+	player.velX *= friction;
 }
 
 function clearMap()
 {
-	context.clearRect(0,0,720,360);	
+	context.clearRect(0,0,640,360);	
 }
