@@ -50,13 +50,13 @@ function intro_screen()
 	context.textAlign = 'center';
 
 	//set font
-	context.font = '50px Impact';
+	context.font = '40px Impact';
 	//set first draw content and the location on canvas
 	context.fillText('My First Game', canvas.width/2, canvas.height/2);
 
 
 	//second draw -- click text
-	context.font = '20px Courier Bold';
+	context.font = '15px Courier Bold';
 	context.fillText('Press ENTER to start', canvas.width/2, canvas.height/1.5);
 }
 
