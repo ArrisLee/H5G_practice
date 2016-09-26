@@ -8,7 +8,9 @@ var keys = [];
 var friction = 0.84;
 var player =
 	{
+		//position on x axis on canvas
 		x: 5,
+		//as the player's height is 20px
 		y: canvas.height - 20,
 		width: 20,
 		height: 20,
