@@ -78,8 +78,9 @@ function loop() {
 			player.velX--;
 		}
 	}
-
+	//basic movement draw
 	player.x += player.velX;
+	//speed down by timing friction
 	player.velX *= friction;
 }
 
