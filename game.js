@@ -64,7 +64,7 @@ function startGame() {
 	}, 1000 / 30)
 }
 
-function loop() {
+function update() {
 	//console.log("Game running");
 	//clearMap();
 	player.draw();
