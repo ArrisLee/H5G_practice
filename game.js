@@ -29,7 +29,6 @@ intro_screen();
 document.body.addEventListener("keydown", function (event) {
 	if (event.keyCode == 13 && gameStarted == false) {
 		startGame();
-		//alert('fuck off');
 	}
 	keys[event.keyCode] = true;
 });
