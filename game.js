@@ -59,7 +59,7 @@ function startGame() {
 	//console.log("Game started");
 	setInterval(function () {
 		clearMap();
-		loop();
+		update();
 		//1000ms
 	}, 1000 / 30)
 }
