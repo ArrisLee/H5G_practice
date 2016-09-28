@@ -6,86 +6,85 @@ var gameStarted = false;
 var keys = [];
 //speed down -- higher means more slippery
 var friction = 0.84;
-var player =
-	{
-		//position on x axis on canvas
-		x: 5,
-		//as the player's height is 20px
-		y: canvas.height - 20,
-		width: 20,
-		height: 20,
-		speed: 5,
-		velX: 0,
-		velY: 0,
-		color: "#ff0000",
-		draw: function () {
-			context.fillStyle = this.color;
-			context.fillRect(this.x, this.y, this.width, this.height);
-		}
-	}
+var player = {
+    //position on x axis on canvas
+    x: 5,
+    //as the player's height is 20px
+    y: canvas.height - 20,
+    width: 20,
+    height: 20,
+    speed: 5,
+    velX: 0,
+    velY: 0,
+    color: "#ff0000",
+    draw: function() {
+        context.fillStyle = this.color;
+        context.fillRect(this.x, this.y, this.width, this.height);
+    }
+}
 
 
 //logic
 intro_screen();
 
-document.body.addEventListener("keydown", function (event) {
-	if (event.keyCode == 13 && gameStarted == false) {
-		startGame();
-	}
-	keys[event.keyCode] = true;
+document.body.addEventListener("keydown", function(event) {
+    if (event.keyCode == 13 && gameStarted == false) {
+        startGame();
+    }
+    keys[event.keyCode] = true;
 });
 
-document.body.addEventListener("keyup", function (event) {
-	keys[event.keyCode] = false;
+document.body.addEventListener("keyup", function(event) {
+    keys[event.keyCode] = false;
 });
 
 
 function intro_screen() {
-	//set style and location for the text
-	context.fillStyle = "#0099CC";
-	context.textAlign = 'center';
+    //set style and location for the text
+    context.fillStyle = "#0099CC";
+    context.textAlign = 'center';
 
-	//set font
-	context.font = '44px Impact';
-	//set first draw content and the location on canvas
-	context.fillText('My First Game', canvas.width / 2, canvas.height / 2);
+    //set font
+    context.font = '44px Impact';
+    //set first draw content and the location on canvas
+    context.fillText('My First Game', canvas.width / 2, canvas.height / 2);
 
 
-	//second draw -- click text
-	context.font = '16x Courier Bold';
-	context.fillText('Press ENTER to start', canvas.width / 2, canvas.height / 1.5);
+    //second draw -- click text
+    context.font = '16px Courier New';
+    context.fillText('Press ENTER to start', canvas.width / 2, canvas.height / 1.5);
 }
 
 function startGame() {
-	gameStarted = true;
-	//console.log("Game started");
-	setInterval(function () {
-		clearMap();
-		update();
-		//1000ms
-	}, 1000 / 30)
+    gameStarted = true;
+    //console.log("Game started");
+    setInterval(function() {
+        clearMap();
+        update();
+        //1000ms
+    }, 1000 / 60)
 }
 
 function update() {
-	//console.log("Game running");
-	//clearMap();
-	player.draw();
-	if (keys[39]) {
-		if (player.velX < player.speed) {
-			player.velX++;
-		}
-	}
-	if (keys[37]) {
-		if (player.velX > -player.speed) {
-			player.velX--;
-		}
-	}
-	//basic movement draw
-	player.x += player.velX;
-	//speed down by timing friction
-	player.velX *= friction;
+    //console.log("Game running");
+    //clearMap();
+    player.draw();
+    if (keys[39]) {
+        if (player.velX < player.speed) {
+            player.velX++;
+        }
+    }
+    if (keys[37]) {
+        if (player.velX > -player.speed) {
+            player.velX--;
+        }
+    }
+    //basic movement draw
+    player.x += player.velX;
+    //speed down by timing friction
+    player.velX *= friction;
 }
 
 function clearMap() {
-	context.clearRect(0, 0, 640, 360);
+    context.clearRect(0, 0, 640, 360);
 }
