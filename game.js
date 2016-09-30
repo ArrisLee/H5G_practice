@@ -30,6 +30,7 @@ var player = {
 var platforms = [];
 var platform_width = 120;
 var platform_height = 10;
+var platform_size = 20;
 
 
 //logic
