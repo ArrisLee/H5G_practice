@@ -70,7 +70,7 @@ function startGame() {
         clearMap();
         update();
         //1000ms
-    }, 1000 / 60)
+    }, 1000 / 55)
 }
 
 function update() {
