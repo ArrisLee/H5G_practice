@@ -30,7 +30,14 @@ var player = {
 var platforms = [];
 var platform_width = 120;
 var platform_height = 10;
-var platform_size = 20;
+
+//add one platform into the platform array
+platforms.push({
+    x: canvas.width-170,
+    y: 40,
+    width: platform_width,
+    height: platform_height,
+});
 
 
 //logic
@@ -72,6 +79,14 @@ function startGame() {
         update();
         //1000ms
     }, 1000 / 55)
+}
+
+//draw platforms on canvas
+function draw_platforms(){
+    context.fillStyle = "#333333";
+	for(var i = 0; i < platforms.length; i++){
+		context.fillRect(platforms[i].x, platforms[i].y, platforms[i].width, platforms[i].height);
+	}
 }
 
 function update() {
