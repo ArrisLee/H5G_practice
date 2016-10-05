@@ -33,8 +33,34 @@ var platform_height = 10;
 
 //add one platform into the platform array
 platforms.push({
-    x: canvas.width-170,
+    x: canvas.width - 170,
     y: 40,
+    width: platform_width,
+    height: platform_height,
+});
+
+platforms.push({
+    x: canvas.width - 170,
+    y: canvas.height - 50,
+    width: platform_width,
+    height: platform_height,
+});
+platforms.push({
+    x: canvas.width - 380,
+    y: canvas.height - 120,
+    width: platform_width,
+    height: platform_height,
+});
+platforms.push({
+    x: canvas.width - 380,
+    y: canvas.height - 240,
+    width: platform_width,
+    height: platform_height,
+});
+
+platforms.push({
+    x: canvas.width - 590,
+    y: canvas.height - 180,
     width: platform_width,
     height: platform_height,
 });
@@ -82,11 +108,11 @@ function startGame() {
 }
 
 //draw platforms on canvas
-function draw_platforms(){
+function draw_platforms() {
     context.fillStyle = "#333333";
-	for(var i = 0; i < platforms.length; i++){
-		context.fillRect(platforms[i].x, platforms[i].y, platforms[i].width, platforms[i].height);
-	}
+    for (var i = 0; i < platforms.length; i++) {
+        context.fillRect(platforms[i].x, platforms[i].y, platforms[i].width, platforms[i].height);
+    }
 }
 
 function update() {
