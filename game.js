@@ -118,6 +118,7 @@ function draw_platforms() {
 function update() {
     //console.log("Game running");
     //clearMap();
+    draw_platforms();
     player.draw();
 
     //move right
