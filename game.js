@@ -31,7 +31,7 @@ var platforms = [];
 var platform_width = 120;
 var platform_height = 10;
 
-//add one platform into the platform array
+//add platforms into the platform array
 platforms.push({
   x: canvas.width - 170,
   y: 40,
@@ -66,7 +66,7 @@ platforms.push({
 });
 
 
-//logic
+//game process
 intro_screen();
 
 document.body.addEventListener("keydown", function(event) {
